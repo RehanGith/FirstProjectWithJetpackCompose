@@ -31,6 +31,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.simpleuiproject.ui.theme.Purple300
@@ -73,7 +74,7 @@ fun Buttons(
 }
 @Composable
 fun MyCard() {
-    Card(shape = RoundedCornerShape(10.dp)
+    Card(shape = RoundedCornerShape(20.dp)
     , modifier = Modifier
             .height(175.dp)
             .width(200.dp)
@@ -86,6 +87,24 @@ fun MyCard() {
                     .clip(CircleShape)
                     .size(100.dp),
                     contentScale = ContentScale.Crop)
+                Text(text = "John Doe", style = TextStyle(
+                    fontSize = 20.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ))
+                Text(text = "this is for description", style = TextStyle(
+                    fontSize = 15.sp,
+                    color = Color.Black,
+                    textAlign = TextAlign.Center
+                ))
+                Text(text = "This is for price", style = TextStyle(
+                    fontSize = 20.sp,
+                    color = Color.Black,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                ))
+
 
             }
 
