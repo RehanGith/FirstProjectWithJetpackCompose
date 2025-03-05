@@ -15,6 +15,9 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -34,6 +37,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.simpleuiproject.ui.theme.Data
 import com.example.simpleuiproject.ui.theme.Purple300
 
 @Composable
@@ -57,7 +61,12 @@ fun HomeUi() {
                 }
 
             }
-            MyCard()
+            LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+                items(Data.dataList) {
+                    MyCard(it)
+                }
+            }
+
         }
     }
 }
@@ -73,32 +82,32 @@ fun Buttons(
 
 }
 @Composable
-fun MyCard() {
+fun MyCard(demo : Data.Demo) {
     Card(shape = RoundedCornerShape(20.dp)
     , modifier = Modifier
-            .height(175.dp)
+            .height(250.dp)
             .width(200.dp)
             .padding(10.dp)
             .background(Color.Gray)){
         Box(modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center) {
             Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-                Image(painter = painterResource(id = R.drawable.profile), contentDescription = null, modifier = Modifier
+                Image(painter = painterResource(demo.profile), contentDescription = null, modifier = Modifier
                     .clip(CircleShape)
                     .size(100.dp),
                     contentScale = ContentScale.Crop)
-                Text(text = "John Doe", style = TextStyle(
+                Text(text = demo.name, style = TextStyle(
                     fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
                     textAlign = TextAlign.Center
                 ))
-                Text(text = "this is for description", style = TextStyle(
+                Text(text = demo.description, style = TextStyle(
                     fontSize = 15.sp,
                     color = Color.Black,
                     textAlign = TextAlign.Center
                 ))
-                Text(text = "This is for price", style = TextStyle(
+                Text(text = demo.price, style = TextStyle(
                     fontSize = 20.sp,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold,
